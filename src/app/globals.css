@@ -1,33 +1,53 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-background: #F7F4EF;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1917;
+  --color-text-muted: #8C8880;
+  --color-border: #E4E0D9;
+
+  --color-green: #3B6E52;
+  --color-green-light: #EBF3EE;
+  --color-amber: #C8855A;
+  --color-amber-light: #FAF0E9;
+
+  /* Typography */
+  --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-sora), ui-serif, Georgia, serif;
+  --font-mono: var(--font-source-code-pro), ui-monospace, monospace;
+
+  /* Border radius */
+  --radius-card: 1rem;
+  --radius-button: 0.5rem;
+  --radius-tag: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(26 25 23 / 0.06), 0 1px 2px -1px rgb(26 25 23 / 0.06);
+  --shadow-card-hover: 0 4px 16px 0 rgb(26 25 23 / 0.10), 0 2px 4px -1px rgb(26 25 23 / 0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.65;
 }
 
 a {
@@ -35,8 +55,21 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* ─── Selection ─────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-green);
+  color: #fff;
 }
+
+/* ─── Focus ─────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-background); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
