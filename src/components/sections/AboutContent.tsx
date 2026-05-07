@@ -574,7 +574,7 @@ function CtaSection({ t }: { t: Translations }) {
           {t.cta_primary_book}
         </Link>
         <a
-          href="mailto:edgarbacker@gmail.com"
+          href="mailto:contact@edgarbacker.dev"
           style={{
             display: "inline-flex",
             alignItems: "center",

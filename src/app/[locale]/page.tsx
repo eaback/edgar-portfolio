@@ -132,7 +132,7 @@ export default async function HomePage({ params }: Props) {
         body={t("cta_body")}
         ctaPrimary={t("cta_primary_book")}
         ctaSecondary={t("cta_secondary_email")}
-        emailAddress="edgarbacker@gmail.com"
+        emailAddress="contact@edgarbacker.dev"
       />
     </main>
   );
