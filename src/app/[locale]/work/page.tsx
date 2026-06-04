@@ -108,6 +108,26 @@ const ALL_PROJECTS: ProjectDef[] = [
     placeholderGradient: "linear-gradient(135deg, #EBF3EE 0%, #d4e5e0 100%)",
     cta: "",
   },
+  {
+    slug: "dotnet-clean-api",
+    title: "dotnet-clean-api-starter",
+    category: "Open Source · API",
+    description: {
+      en: "Production-ready .NET 10 Web API template — Clean Architecture, CQRS, JWT auth, Docker and integration tests. Clone and build.",
+      nl: "Productieklaar .NET 10 Web API-template — Clean Architecture, CQRS, JWT-auth, Docker en integratietests. Clone en bouw.",
+      sv: "Produktionsfärdig .NET 10 Web API-mall — Clean Architecture, CQRS, JWT-auth, Docker och integrationstester. Klona och bygg.",
+      de: "Produktionsreifes .NET 10 Web-API-Template — Clean Architecture, CQRS, JWT-Auth, Docker und Integrationstests. Klonen und bauen.",
+      no: "Produksjonsklar .NET 10 Web API-mal — Clean Architecture, CQRS, JWT-auth, Docker og integrasjonstester. Klon og bygg.",
+    },
+    stat: {
+      value: "17",
+      label: { en: "tests passing", nl: "tests geslaagd", sv: "tester godkända", de: "Tests bestanden", no: "tester bestått" },
+    },
+    stack: [".NET 10", "C#", "PostgreSQL", "Docker", "MediatR", "JWT"],
+    image: "/images/projects/dotnet-api/dotnet-api.png",
+    placeholderGradient: "linear-gradient(135deg, #EEF0F8 0%, #c5ccef 100%)",
+    cta: "",
+  },
 ];
 
 export default async function WorkPage({ params }: Props) {
