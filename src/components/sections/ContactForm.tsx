@@ -32,6 +32,8 @@ type Status = "idle" | "sending" | "success" | "error";
 export default function ContactForm({ t, locale }: { t: ContactTranslations; locale: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", company: "", type: "", message: "" });
+  // Honeypot — onzichtbaar voor gebruikers, bots vullen het in en worden server-side genegeerd
+  const [websiteUrl, setWebsiteUrl] = useState("");
 
   const projectTypes = [
     { value: "website", label: t.field_type_website },
@@ -48,7 +50,7 @@ export default function ContactForm({ t, locale }: { t: ContactTranslations; loc
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, locale }),
+        body: JSON.stringify({ ...form, locale, website_url: websiteUrl }),
       });
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
@@ -121,6 +123,13 @@ export default function ContactForm({ t, locale }: { t: ContactTranslations; loc
 
         {/* Right — form */}
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+
+          {/* Honeypot — off-screen, niet focusbaar; server negeert inzendingen met dit veld gevuld */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }}>
+            <label htmlFor="website_url">Website</label>
+            <input type="text" id="website_url" name="website_url" tabIndex={-1} autoComplete="off"
+              value={websiteUrl} onChange={(e) => setWebsiteUrl(e.target.value)} />
+          </div>
 
           <div className="contact-field-row">
             <Field label={t.field_name} required>

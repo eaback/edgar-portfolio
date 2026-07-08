@@ -41,6 +41,9 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* framer-motion useScroll meet offsets t.o.v. de scroll-container (= html
+     bij window-scroll); die moet non-static zijn voor een correcte meting */
+  position: relative;
 }
 
 body {
